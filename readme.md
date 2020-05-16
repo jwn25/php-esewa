@@ -52,14 +52,14 @@ Update your `.env` with credentials provided by esewa.
 	  }
 
 	  public function processPayment($order_id) {
-		try {  
+	    try {  
           $response = $this->payment_gateway->purchase([  
               'amt' => 100,  
               'txAmt' => 0,  
               'psc' => 0,  
               'pdc' => 0,  
               'tAmt' => 100,  
-              'pid' => rand(10, 10000),  
+              'pid' => rand(10, 10000), //Your Purchase Unique ID
               'su' => route('payment-completed', $order_id),  
               'fu' => route('payment-failed', $order_id),  
           ])->send();  
@@ -111,14 +111,14 @@ Update your `.env` with credentials provided by esewa.
 
     try {
         $resp = $payment_gateway->purchase([
-            'amt' => 100,  
-		    'txAmt' => 0,  
-			'psc' => 0,  
-			'pdc' => 0,  
-			'tAmt' => 100,  
-			'pid' => rand(10,10000),  
-			'su' => 'https://yoursite.com/payment/success,  
-			'fu' => 'https://yoursite.com/payment/failed',
+          'amt' => 100,  
+          'txAmt' => 0,  
+          'psc' => 0,  
+          'pdc' => 0,  
+          'tAmt' => 100,  
+          'pid' => rand(10,10000),  //Your Purchase Unique ID
+          'su' => 'https://yoursite.com/payment/success,  
+          'fu' => 'https://yoursite.com/payment/failed',
         ])->send();
 
         if ($resp->isRedirect()) {
@@ -136,9 +136,9 @@ Update your `.env` with credentials provided by esewa.
     $payment_gateway->setTestMode(true); //set it false if you want live mode.
 	
 	$resp = $payment_gateway->verifyPayment([
-		'amt' => $request->amt,  
-		'rid' => $request->get('refId'),  
-		'pid' => $request->get('oid'),
+		'amt' => '100',  
+		'rid' => 'ABCD', //rid from url (attached by esewa) 
+		'pid' => '1234-5678', //pid from url (attached by esewa)
 	])->send();
 	
 	if($resp->isSuccessful()) {
