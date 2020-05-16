@@ -1,11 +1,14 @@
 {
     "name": "jwn25/php-esewa",
-    "description": "Package to install esewa with php/Laravel",
+    "description": "Package to integrate esewa with php/Laravel for Omnipay payment library",
     "authors": [
         {
             "name": "Jeewan Dhakal",
             "email": "jeewandhakal25@gmail.com"
         }
+    ],
+    "keywords": [
+        "esewa", "payment", "laravel", "nepali payment gateway"
     ],
     "license":"MIT",
     "autoload":{
@@ -25,11 +28,6 @@
         "branch-alias":{
             "dev-master":"3.0.x-dev"
         }
-    },
-    "scripts":{
-        "test":"vendor/bin/phpunit",
-        "check-style":"phpcs -p --standard=PSR2 src/",
-        "fix-style":"phpcbf -p --standard=PSR2 src/"
     },
     "prefer-stable":true
 }

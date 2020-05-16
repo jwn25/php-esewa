@@ -12,7 +12,7 @@ class VerifyPaymentRequest extends AbstractRequest
     /**
      * @var string
      */
-    protected $verifyEndPoint = 'epay/transrec';
+    protected $verifyUrl = 'epay/transrec';
 
     /**
      * @return string
@@ -21,8 +21,8 @@ class VerifyPaymentRequest extends AbstractRequest
     {
         return [
             'amt' => $this->getAmount(),
-            'rid' => $this->getReferenceNumber(),
-            'pid' => $this->getProductCode(),
+            'rid' => $this->getRid(),
+            'pid' => $this->getPid(),
             'scd' => $this->getMerchantCode(),
         ];
     }
@@ -48,8 +48,8 @@ class VerifyPaymentRequest extends AbstractRequest
      */
     protected function getEndpoint()
     {
-        $endPoint = $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
+        $endPoint = $this->getTestMode() ? $this->sandboxUrl : $this->liveUrl;
 
-        return $endPoint.$this->verifyEndPoint;
+        return $endPoint.$this->verifyUrl;
     }
 }

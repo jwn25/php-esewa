@@ -2,21 +2,22 @@
 
 namespace Omnipay\PhpEsewa\Message;
 
+use Omnipay\PhpEsewa\SecureGateway;
+
 /**
  * Class AbstractRequest.
  */
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
-    
     /**
      * @var string
      */
-    protected $liveEndpoint = 'https://esewa.com.np/';
+    protected $liveUrl = 'https://esewa.com.np/';
 
     /**
      * @var string
      */
-    protected $testEndpoint = 'https://uat.esewa.com.np/';
+    protected $sandboxUrl = 'https://uat.esewa.com.np/';
 
     /**
      * @return string
@@ -37,89 +38,102 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     /**
      * @param $value
      */
-    public function setTaxAmount($value)
+    public function setTax($value)
     {
-        return $this->setParameter('taxAmount', $value);
+        return $this->setParameter('txAmt', $value);
     }
 
     /**
      * @return string
      */
-    public function getTaxAmount()
+    public function getTax()
     {
-        return $this->getParameter('taxAmount');
+        return $this->getParameter('txAmt');
     }
 
     /**
      * @param $value
      */
-    public function setServiceCharge($value)
+    public function setSC($value)
     {
-        return $this->setParameter('serviceCharge', $value);
+        return $this->setParameter('psc', $value);
     }
 
     /**
      * @return string
      */
-    public function getServiceCharge()
+    public function getSC()
     {
-        return $this->getParameter('serviceCharge');
+        return $this->getParameter('psc');
     }
 
     /**
      * @param $value
      */
-    public function setDeliveryCharge($value)
+    public function setDC($value)
     {
-        return $this->setParameter('deliveryCharge', $value);
+        return $this->setParameter('pdc', $value);
     }
 
     /**
      * @return string
      */
-    public function getDeliveryCharge()
+    public function getDC()
     {
-        return $this->getParameter('deliveryCharge');
+        return $this->getParameter('pdc');
     }
 
     /**
      * @param $value
      */
-    public function setTotalAmount($value)
+    public function setTAmt($value)
     {
-        return $this->setParameter('totalAmount', $value);
+        return $this->setParameter('tAmt', $value);
     }
 
     /**
      * @return string
      */
-    public function getTotalAmount()
+    public function getTAmt()
     {
-        return $this->getParameter('totalAmount');
+        return $this->getParameter('tAmt');
     }
 
     /**
      * @param $value
      */
-    public function setProductCode($value)
+    public function setPid($value)
     {
-        return $this->setParameter('productCode', $value);
+        return $this->setParameter('pid', $value);
     }
 
     /**
      * @return string
      */
-    public function getProductCode()
+    public function getPid()
     {
-        return $this->getParameter('productCode');
+        return $this->getParameter('pid');
+    }
+    public function setAmt($value)
+    {
+        return $this->setParameter('amt', $value);
     }
 
+    public function getAmt()
+    {
+        return $this->getParameter('amt');
+    }
     /**
      * @return string
      */
-    public function getFailedUrl()
+    public function getFu()
     {
-        return $this->getParameter('failedUrl');
+        return $this->getParameter('fu');
+    }
+
+    public function getSu()
+    {
+        return $this->getParameter('su');
     }
 
     /**
@@ -127,26 +141,26 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      *
      * @return $this
      */
-    public function setFailedUrl($value)
+    public function setSu($value)
     {
-        return $this->setParameter('failedUrl', $value);
+        return $this->setParameter('su', $value);
     }
-
-    /**
-     * @return string
-     */
-    public function getReferenceNumber()
-    {
-        return $this->getParameter('referenceNumber');
-    }
-
     /**
      * @param string $value
      *
      * @return $this
      */
-    public function setReferenceNumber($value)
+    public function setFu($value)
     {
-        return $this->setParameter('referenceNumber', $value);
+        return $this->setParameter('fu', $value);
+    }
+
+    public function setRid($value) {
+        return $this->setParameter('rid');
+    }
+
+    public function getRid()
+    {
+        return $this->getParameter('rid');
     }
 }

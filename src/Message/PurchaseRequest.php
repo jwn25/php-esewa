@@ -10,7 +10,7 @@ class PurchaseRequest extends AbstractRequest
     /**
      * @var string
      */
-    protected $purchaseEndPoint = 'epay/main';
+    protected $purchaseUrl = 'epay/main';
 
     /**
      * Prepare Data for API.
@@ -19,18 +19,18 @@ class PurchaseRequest extends AbstractRequest
      */
     public function getData()
     {
-        $this->validate('merchantCode', 'amount', 'totalAmount', 'productCode', 'failedUrl', 'returnUrl');
+        $this->validate('merchantCode', 'amt', 'tAmt', 'pid', 'fu', 'su');
 
         return [
-            'amt'   => $this->getAmount(),
-            'pdc'   => $this->getDeliveryCharge() ?: 0,
-            'psc'   => $this->getServiceCharge() ?: 0,
-            'txAmt' => $this->getTaxAmount() ?: 0,
-            'tAmt'  => $this->getTotalAmount(),
-            'pid'   => $this->getProductCode(),
+            'amt'   => $this->getAmt(),
+            'pdc'   => $this->getDC() ?: 0,
+            'psc'   => $this->getSC() ?: 0,
+            'txAmt' => $this->getTax() ?: 0,
+            'tAmt'  => $this->getTAmt(),
+            'pid'   => $this->getPid(),
             'scd'   => $this->getMerchantCode(),
-            'su'    => $this->getReturnUrl(),
-            'fu'    => $this->getFailedUrl(),
+            'su'    => $this->getSu(),
+            'fu'    => $this->getFu(),
         ];
     }
 
@@ -49,8 +49,8 @@ class PurchaseRequest extends AbstractRequest
      */
     protected function getEndpoint()
     {
-        $endPoint = $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
+        $endPoint = $this->getTestMode() ? $this->sandboxUrl : $this->liveUrl;
 
-        return $endPoint.$this->purchaseEndPoint;
+        return $endPoint.$this->purchaseUrl;
     }
 }
