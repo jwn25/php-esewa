@@ -2,7 +2,8 @@
 php-esewa is a package which is developed to implement [esewa](https://esewa.com.np) support for [Omnipay](https://github.com/thephpleague/omnipay). Omnipay is a payment processing library for PHP.
 
 **Installation**
- As this package is esewa support for Omnipay, installation of omnipay library is must.
+
+As this package is esewa support for Omnipay, installation of omnipay library is must.
  
 
     composer require league/omnipay
@@ -11,6 +12,7 @@ php-esewa is a package which is developed to implement [esewa](https://esewa.com
 
 ## Laravel Usage
 **Config**
+
 Add following lines on config/services.php
 
     'esewa' => [  
@@ -18,6 +20,7 @@ Add following lines on config/services.php
 	  'test_mode' => env('ESEWA_TEST_MODE', true)  
 	]
 **ENV**
+
 Update your `.env` with credentials provided by esewa.
 
     ESEWA_MERCHANT_CODE=YOUR_MERCHANT_CODE
@@ -103,7 +106,7 @@ Update your `.env` with credentials provided by esewa.
 
     $payment_gateway = Omnipay::create('PhpEsewa_Secure');
 
-    $payment_gateway->setMerchantCode('MERCHANT_CODE');
+    $payment_gateway->setScd('MERCHANT_CODE');
     $payment_gateway->setTestMode(true); //set it false if you want live mode.
 
     try {
