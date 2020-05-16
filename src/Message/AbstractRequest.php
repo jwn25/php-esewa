@@ -22,17 +22,17 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     /**
      * @return string
      */
-    public function getMerchantCode()
+    public function getScd()
     {
-        return $this->getParameter('merchantCode');
+        return $this->getParameter('scd');
     }
 
     /**
      * @param $value
      */
-    public function setMerchantCode($value)
+    public function setScd($value)
     {
-        return $this->setParameter('merchantCode', $value);
+        return $this->setParameter('scd', $value);
     }
 
     /**
@@ -114,11 +114,19 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return $this->getParameter('pid');
     }
+
+    /**
+     * @param $value
+     * @return AbstractRequest
+     */
     public function setAmt($value)
     {
         return $this->setParameter('amt', $value);
     }
 
+    /**
+     * @return mixed
+     */
     public function getAmt()
     {
         return $this->getParameter('amt');
@@ -131,6 +139,9 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->getParameter('fu');
     }
 
+    /**
+     * @return mixed
+     */
     public function getSu()
     {
         return $this->getParameter('su');
@@ -155,10 +166,17 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('fu', $value);
     }
 
+    /**
+     * @param $value
+     * @return AbstractRequest
+     */
     public function setRid($value) {
-        return $this->setParameter('rid');
+        return $this->setParameter('rid', $value);
     }
 
+    /**
+     * @return mixed
+     */
     public function getRid()
     {
         return $this->getParameter('rid');

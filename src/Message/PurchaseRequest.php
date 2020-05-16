@@ -19,7 +19,7 @@ class PurchaseRequest extends AbstractRequest
      */
     public function getData()
     {
-        $this->validate('merchantCode', 'amt', 'tAmt', 'pid', 'fu', 'su');
+        $this->validate('scd', 'amt', 'tAmt', 'pid', 'fu', 'su');
 
         return [
             'amt'   => $this->getAmt(),
@@ -28,16 +28,15 @@ class PurchaseRequest extends AbstractRequest
             'txAmt' => $this->getTax() ?: 0,
             'tAmt'  => $this->getTAmt(),
             'pid'   => $this->getPid(),
-            'scd'   => $this->getMerchantCode(),
+            'scd'   => $this->getScd(),
             'su'    => $this->getSu(),
             'fu'    => $this->getFu(),
         ];
     }
 
     /**
-     * @param $data
-     *
-     * @return \Omnipay\Esewa\Message\PurchaseResponse
+     * @param mixed $data
+     * @return \Omnipay\Common\Message\ResponseInterface|PurchaseResponse
      */
     public function sendData($data)
     {
