@@ -20,17 +20,16 @@ class VerifyPaymentRequest extends AbstractRequest
     public function getData()
     {
         return [
-            'amt' => $this->getAmount(),
+            'amt' => $this->getAmt(),
             'rid' => $this->getRid(),
             'pid' => $this->getPid(),
-            'scd' => $this->getMerchantCode(),
+            'scd' => $this->getScd(),
         ];
     }
 
     /**
-     * @param $data
-     *
-     * @return \Omnipay\Esewa\Message\OrderResponse
+     * @param mixed $data
+     * @return \Omnipay\Common\Message\ResponseInterface|VerifyPaymentResponse
      */
     public function sendData($data)
     {

@@ -5,7 +5,8 @@ namespace Omnipay\PhpEsewa;
 use Omnipay\Common\AbstractGateway;
 
 /**
- * Class SecureGateway.
+ * Class SecureGateway
+ * @package Omnipay\PhpEsewa
  */
 class SecureGateway extends AbstractGateway
 {
@@ -31,17 +32,17 @@ class SecureGateway extends AbstractGateway
     /**
      * @return string
      */
-    public function getMerchantCode()
+    public function getScd()
     {
-        return $this->getParameter('merchantCode');
+        return $this->getParameter('scd');
     }
 
     /**
      * @param $value
      */
-    public function setMerchantCode($value)
+    public function setScd($value)
     {
-        return $this->setParameter('merchantCode', $value);
+        return $this->setParameter('scd', $value);
     }
 
     /**
@@ -92,20 +93,34 @@ class SecureGateway extends AbstractGateway
         return $this->getParameter('pdc');
     }
 
+    /**
+     * @param $value
+     * @return SecureGateway
+     */
     public function setAmt($value)
     {
         return $this->setParameter('amt', $value);
     }
 
+    /**
+     * @return mixed
+     */
     public function getAmt()
     {
         return $this->getParameter('amt');
     }
 
+    /**
+     * @param $value
+     * @return SecureGateway
+     */
     public function setRid($value) {
         return $this->setParameter('rid');
     }
 
+    /**
+     * @return mixed
+     */
     public function getRid() {
         return $this->getParameter('rid');
     }
@@ -150,24 +165,25 @@ class SecureGateway extends AbstractGateway
     }
 
     /**
-     * @param string $value
-     *
-     * @return $this
+     * @param $value
+     * @return SecureGateway
      */
     public function setFu($value)
     {
         return $this->setParameter('fu', $value);
     }
 
+    /**
+     * @return mixed
+     */
     public function getSu()
     {
         return $this->getParameter('su');
     }
 
     /**
-     * @param string $value
-     *
-     * @return $this
+     * @param $value
+     * @return SecureGateway
      */
     public function setSu($value)
     {
@@ -176,8 +192,7 @@ class SecureGateway extends AbstractGateway
 
     /**
      * @param array $parameters
-     *
-     * @return \Omnipay\Esewa\Message\PurchaseRequest
+     * @return \Omnipay\Common\Message\AbstractRequest|\Omnipay\Common\Message\RequestInterface
      */
     public function purchase(array $parameters = [])
     {
@@ -186,8 +201,7 @@ class SecureGateway extends AbstractGateway
 
     /**
      * @param array $parameters
-     *
-     * @return \Omnipay\Esewa\Message\VerifyPaymentRequest
+     * @return \Omnipay\Common\Message\AbstractRequest
      */
     public function verifyPayment(array $parameters = [])
     {

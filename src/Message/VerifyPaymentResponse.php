@@ -21,18 +21,12 @@ class VerifyPaymentResponse extends AbstractResponse
     }
 
     /**
-     * @return string
-     */
-    public function getResponseText()
-    {
-        return (string) $this->data->response_code;
-    }
-
-    /**
      * @return bool
      */
     public function isSuccessful()
     {
-        return in_array($this->getResponseText(), ['Success']);
+        $response_string = (string) $this->data->response_code;
+        $isSuccess = strpos($response_string, 'Success');
+        return ($isSuccess !== false) ? true : false;
     }
 }
